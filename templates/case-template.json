@@ -1,0 +1,40 @@
+{
+  "id": "P000",
+  "slug": "project-name",
+  "publishedAt": "YYYY-MM-DD",
+  "status": "published",
+  "name": "项目名称",
+  "tagline": "一句话说明用户结果",
+  "hook": "最值得读者记住的商业判断",
+  "summary": "产品、用户、最小切口、增长与商业模式摘要。",
+  "category": "从 docs/TAXONOMY.md 选择",
+  "businessModel": "从 docs/TAXONOMY.md 选择",
+  "customer": "主要用户与付费者",
+  "pricing": "公开价格或未公开",
+  "launchCost": "启动资源与成本口径",
+  "chinaOpportunity": 3,
+  "keywords": ["关键词一", "关键词二"],
+  "metrics": [
+    {"label": "最小切口", "value": "具体动作"},
+    {"label": "核心增长", "value": "主要渠道"},
+    {"label": "商业演进", "value": "工具到工作流"}
+  ],
+  "sections": [
+    {"title": "一、项目基本信息", "paragraphs": ["产品与用户结果。"], "facts": [{"label": "创始人", "value": "姓名", "note": "来源口径"}]},
+    {"title": "二、创始人的创业故事", "paragraphs": ["个人背景。", "问题来源与触发事件。", "现实约束与第一步。"], "quote": "可复用的故事结论。"},
+    {"title": "三、第一版产品", "paragraphs": ["MVP 的输入、输出、成本和验证方式。"]},
+    {"title": "四、产品演进", "timeline": [{"stage": "阶段 1", "title": "MVP", "detail": "关键变化。"}]},
+    {"title": "五、关键决策复盘", "cards": [{"title": "决策", "body": "选择、取舍与结果。"}]},
+    {"title": "六、增长与商业模式", "paragraphs": ["获客、收费、成本和留存。"], "flow": ["发现", "体验", "付费", "留存"]},
+    {"title": "七、竞争分析", "table": {"columns": ["方案", "优势", "弱点", "本项目应对"], "rows": [["竞品", "优势", "弱点", "应对"]]}},
+    {"title": "八、风险与边界", "subsections": [{"title": "主要风险", "paragraphs": ["风险及边界。"]}]},
+    {"title": "九、中国复制分析", "china": true, "paragraphs": ["可复制和不可照搬之处。"], "scorecard": [{"label": "AI 依赖度", "score": 3, "note": "九维评分之一；完整案例需覆盖九项"}]},
+    {"title": "十、最低成本 MVP", "paragraphs": ["具体目标用户、输入、输出和付费假设。"], "checklist": ["访谈 10 位目标用户", "提供真实支付入口", "观察首次续费"]},
+    {"title": "十一、创业方法论沉淀", "methods": [{"code": "P000-A", "name": "方法名", "principle": "机制、适用条件和边界。"}], "scorecard": [{"label": "复制价值", "score": 3, "note": "理由"}]}
+  ],
+  "sources": [
+    {"title": "官方一手来源", "url": "https://example.com/", "note": "核验范围"},
+    {"title": "创始人采访", "url": "https://example.com/interview", "note": "核验创业故事"},
+    {"title": "独立来源", "url": "https://example.com/report", "note": "交叉验证"}
+  ]
+}
