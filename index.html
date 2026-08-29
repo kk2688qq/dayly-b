@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="拆解真实 AI 创业项目，从创始人故事、第一版产品到商业模式与中国机会。">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>AI 创业案例库｜从故事到方法</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#library">跳到案例库</a>
+  <header class="site-header">
+    <a class="brand" href="./"><span class="brand-mark">A</span><span>AI 创业案例库<small>FOUNDER STORIES & PLAYBOOKS</small></span></a>
+    <nav aria-label="主导航"><a href="#latest">最新研究</a><a href="#library">全部案例</a><a href="#method">阅读方法</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">A LIVING LIBRARY OF AI BUSINESSES</p>
+        <h1>不只看产品。<br><em>看创始人如何把问题做成生意。</em></h1>
+        <p class="lede">每篇案例从创业起源开始，拆解第一版产品、关键转折、增长路径、商业模式和中国市场的最低成本验证方案。</p>
+        <div class="hero-actions"><a class="button primary" id="latest-link" href="#latest">阅读最新案例</a><a class="button ghost" href="#library">浏览案例库</a></div>
+      </div>
+      <aside class="update-panel" aria-label="数据库更新状态">
+        <span class="live-dot">LIVE DATABASE</span>
+        <strong id="update-date">读取中…</strong>
+        <p>资料更新时间</p>
+        <div class="stats"><div><b id="case-count">—</b><span>深度案例</span></div><div><b id="source-count">—</b><span>事实来源</span></div></div>
+        <small>每次上线后都会读取线上数据并实测页面。</small>
+      </aside>
+    </section>
+
+    <section class="latest" id="latest" aria-labelledby="latest-title">
+      <div class="section-head"><div><p class="eyebrow">LATEST DEEP DIVE</p><h2 id="latest-title">最近发布</h2></div><p>从一个人的问题开始，看到一家公司如何长出来。</p></div>
+      <article id="featured" class="featured" aria-live="polite"><p class="loading">正在读取案例…</p></article>
+    </section>
+
+    <section class="method" id="method" aria-labelledby="method-title">
+      <div class="method-intro"><p class="eyebrow">HOW TO READ</p><h2 id="method-title">一篇案例，回答四个问题。</h2></div>
+      <div class="method-grid">
+        <article><span>01</span><h3>为什么开始？</h3><p>创始人的经历、亲身痛点与第一次判断。</p></article>
+        <article><span>02</span><h3>第一版是什么？</h3><p>最小产品、启动成本与第一批用户。</p></article>
+        <article><span>03</span><h3>怎样成为生意？</h3><p>关键转折、增长、收费和留存逻辑。</p></article>
+        <article><span>04</span><h3>我们能怎么做？</h3><p>中国机会、不可照搬之处与验证清单。</p></article>
+      </div>
+    </section>
+
+    <section class="library" id="library" aria-labelledby="library-title">
+      <div class="section-head"><div><p class="eyebrow">CASE LIBRARY</p><h2 id="library-title">全部案例</h2></div><p id="result-count"></p></div>
+      <div class="controls">
+        <label class="search"><span>搜索</span><input id="search" type="search" placeholder="项目、行业、方法…" autocomplete="off"></label>
+        <select id="category" aria-label="按行业筛选"><option value="">全部行业</option></select>
+        <select id="model" aria-label="按商业模式筛选"><option value="">全部模式</option></select>
+        <button id="clear" type="button">清除</button>
+      </div>
+      <div id="case-grid" class="case-grid" aria-live="polite"></div>
+      <div id="empty" class="empty" hidden><strong>没有匹配案例</strong><p>试试更短的关键词或清除筛选。</p></div>
+    </section>
+  </main>
+
+  <footer><div><strong>AI 创业案例库</strong><p>事实可追溯，判断有边界，方法能行动。</p></div><a href="https://github.com/kk2688qq/dayly-b">GitHub ↗</a></footer>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

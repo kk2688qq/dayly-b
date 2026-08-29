@@ -1,0 +1,7 @@
+{
+  "name": "dayly-b-ai-case-library",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node scripts/validate.mjs", "serve": "python -m http.server 8080"}
+}
