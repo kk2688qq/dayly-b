@@ -45,7 +45,6 @@ const response = await fetch("https://api.openai.com/v1/responses", {
     store: false,
     tools: [{ type: "web_search", search_context_size: "high" }],
     input: prompt,
-    text: { format: { type: "json_object" } },
   }),
 });
 
