@@ -1,0 +1,76 @@
+name: 每日自动更新 AI 创业案例
+
+on:
+  schedule:
+    # GitHub Actions 使用 UTC；00:00 UTC = 北京时间 08:00。
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-case
+  cancel-in-progress: false
+
+jobs:
+  generate-test-publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 生成当天案例
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5' }}
+        run: node scripts/generate-daily-case.mjs
+
+      - name: 验证案例库
+        run: npm test
+
+      - name: 提交并推送
+        run: |
+          git config user.name "dayly-b automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -- data/cases.json
+          git diff --cached --quiet && { echo "没有新增内容"; exit 1; }
+          CASE_ID=$(node -p "JSON.parse(require('fs').readFileSync('data/cases.json')).cases[0].id")
+          CASE_NAME=$(node -p "JSON.parse(require('fs').readFileSync('data/cases.json')).cases[0].name")
+          git commit -m "content: add ${CASE_ID} ${CASE_NAME}"
+          git push origin HEAD:main
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: 发布 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: 在线核验
+        shell: bash
+        run: |
+          EXPECTED_ID=$(node -p "JSON.parse(require('fs').readFileSync('data/cases.json')).cases[0].id")
+          for attempt in {1..12}; do
+            ONLINE_ID=$(curl --fail --silent --show-error "https://kk2688qq.github.io/dayly-b/data/cases.json?run=${GITHUB_RUN_ID}-${attempt}" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).cases[0].id))") || true
+            if [ "$ONLINE_ID" = "$EXPECTED_ID" ]; then
+              echo "GitHub Pages 已更新：$EXPECTED_ID"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Pages 部署完成，但线上数据尚未出现 $EXPECTED_ID"
+          exit 1
