@@ -2,6 +2,7 @@ name: 每日自动更新 AI 创业案例
 
 on:
   push:
+    # 修改工作流文件时执行一次自检；案例提交不会重复触发。
     branches: [main]
     paths: [.github/workflows/daily-case.yml]
   schedule:
