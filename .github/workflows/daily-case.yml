@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  models: read
   pages: write
   id-token: write
 
@@ -36,8 +37,8 @@ jobs:
 
       - name: 生成当天案例
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5' }}
+          GITHUB_MODELS_TOKEN: ${{ github.token }}
+          GITHUB_MODEL: ${{ vars.GITHUB_MODEL || 'openai/gpt-4.1' }}
         run: node scripts/generate-daily-case.mjs
 
       - name: 验证案例库
